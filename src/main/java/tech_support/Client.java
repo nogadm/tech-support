@@ -4,6 +4,8 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import utils.JsonUtils;
+
 public class Client {
     public static void main(String[] args) throws Exception {
         // Create a new Person object with age 20
