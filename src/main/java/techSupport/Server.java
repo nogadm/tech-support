@@ -1,4 +1,4 @@
-package tech_support;
+package techSupport;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -9,6 +9,11 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 
+import strategyPattern.ResponseStrategy;
+import strategyPattern.ResponseTo24X;
+import strategyPattern.ResponseTo36X;
+import strategyPattern.ResponseTo51B;
+import strategyPattern.ResponseToUnknown;
 import utils.JsonUtils;
 
 public class Server {

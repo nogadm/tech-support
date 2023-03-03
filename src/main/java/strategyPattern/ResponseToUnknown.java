@@ -1,4 +1,6 @@
-package tech_support;
+package strategyPattern;
+
+import techSupport.Form;
 
 public class ResponseToUnknown implements ResponseStrategy {
 

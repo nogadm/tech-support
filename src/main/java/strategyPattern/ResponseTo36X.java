@@ -1,9 +1,10 @@
-package tech_support;
+package strategyPattern;
 
+import techSupport.Form;
 import utils.Consts;
 import utils.Indicator;
 
-public class ResponseTo51B implements ResponseStrategy {
+public class ResponseTo36X implements ResponseStrategy {
 
 	@Override
 	public String generateResponse(Form form) {
@@ -28,15 +29,14 @@ public class ResponseTo51B implements ResponseStrategy {
 		}
 		
 		// Generate response based on the status of the lights
+		if (onCount == Consts.ALL_LIGHTS)
+			return "ALL is ok";
 		if (offCount == Consts.ALL_LIGHTS)
 			return "turn on the device";
-		if (blinkingCount >= Consts.ONE_LIGHT)
+		if (blinkingCount == Consts.TWO_LIGHTS)
 			return "Please wait";
-		if ((onCount > Consts.ONE_LIGHT) && (offCount == (Consts.ALL_LIGHTS - onCount)))
-			return "ALL is ok";
 		// CHANGE LATER!
 		else 
 			return "add later";
 	}
-
 }

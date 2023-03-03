@@ -1,4 +1,4 @@
-package tech_support;
+package techSupport;
 
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
