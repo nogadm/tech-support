@@ -64,9 +64,6 @@ public class Form {
 				+ deviceSerialNumber + ", lightsStatus=" + lightsStatus.get(0) + " " +
 				lightsStatus.get(1) + " " + lightsStatus.get(2) + "]";
 	}
-
-	
-	
 	
 	public static void main(String[] args) throws Exception {
 		ArrayList<Indicator> status = new ArrayList<>();
@@ -86,6 +83,8 @@ public class Form {
 		System.out.println(form1);
 		System.out.println(form2);
 		System.out.println(form3);
+	
+		
 	}
 	
 
