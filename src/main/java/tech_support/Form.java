@@ -65,42 +65,10 @@ public class Form {
 				lightsStatus.get(1) + " " + lightsStatus.get(2) + "]";
 	}
 	
-	public static void main(String[] args) throws Exception {
-		ArrayList<Indicator> status = new ArrayList<>();
-		status.add(Indicator.on);
-		status.add(Indicator.on);
-		status.add(Indicator.blinking);
-		
-		Form form1 = new Form(4678, "my computer is broken", "65-x");
-		form1.setLightsStatus(status);
-		
-		Form form2 = new Form(58, "my computer is broken", "54-x");
-		form2.setLightsStatus(status);
-		
-		Form form3 = new Form(58, "my computer is broken", "54-x");
-		form3.setLightsStatus(status);
-		
-		System.out.println(form1);
-		System.out.println(form2);
-		System.out.println(form3);
 	
-		
-	}
+	
 	
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
 
 
