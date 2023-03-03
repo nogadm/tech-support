@@ -15,13 +15,20 @@ public class Form {
 	
 	// Form constructor
 	public Form(int userID, String problemDescription, String deviceSerialNumber) {
+		// Automatic count of formID
 		this.formID = formIdCounter++;
 		this.userID = userID;
+		// Problem description is up to 300 chars
 		if (problemDescription.length() <= Consts.MAX_LENGTH_OF_DESCRIPTION)
 			this.problemDescription = problemDescription;
 		else 
 			this.problemDescription = problemDescription.substring(0, Consts.MAX_LENGTH_OF_DESCRIPTION);
-		this.deviceSerialNumber = deviceSerialNumber;
+		
+		// Serial number must be 64 chars long and only contain capital letters, numbers or hyphens
+		if (deviceSerialNumber.matches("^[A-Z0-9-]{64}$"))
+			this.deviceSerialNumber = deviceSerialNumber;
+		else 
+			this.deviceSerialNumber = null;
 		lightsStatus = new ArrayList<>();
 	}
 	
@@ -64,10 +71,6 @@ public class Form {
 				+ deviceSerialNumber + ", lightsStatus=" + lightsStatus.get(0) + " " +
 				lightsStatus.get(1) + " " + lightsStatus.get(2) + "]";
 	}
-	
-	
-	
-	
 
 }
 
