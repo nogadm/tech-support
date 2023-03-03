@@ -3,19 +3,30 @@ package tech_support;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 
+import utils.Indicator;
 import utils.JsonUtils;
 
 public class Client {
     public static void main(String[] args) throws Exception {
-        // Create a new Person object with age 20
-        Person person = new Person(7);
+     
         
-        // Convert the Person object to JSON
-        String json = JsonUtils.toJson(person);
+        //---------------------------
+        ArrayList<Indicator> status = new ArrayList<>();
+        status.add(Indicator.off);
+		status.add(Indicator.off);
+		status.add(Indicator.off);
+        Form form1 = new Form(4678, "my computer is broken", "4444");
+		form1.setLightsStatus(status);
+		
+		//---------------------------
+        
+        // Convert the Form object to JSON
+        String json = JsonUtils.toJson(form1);
         
         // Send an HTTP POST request to the server
-        URL url = new URL("http://localhost:8000/age");
+        URL url = new URL("http://localhost:8000/form");
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setDoOutput(true);
         connection.setRequestMethod("POST");
