@@ -6,13 +6,16 @@ import utils.Consts;
 import utils.Indicator;
 
 public class Form {
+	private static int formIdCounter = 1;
+	private int formID;
 	private int userID;
 	private String problemDescription;
 	private String deviceSerialNumber;
 	private ArrayList<utils.Indicator> lightsStatus;
 	
 	// Form constructor
-	public Form(int userID, String problemDescription, String deviceSerialNumber, ArrayList<Indicator> lightsStatus) {
+	public Form(int userID, String problemDescription, String deviceSerialNumber) {
+		this.formID = formIdCounter++;
 		this.userID = userID;
 		if (problemDescription.length() <= Consts.MAX_LENGTH_OF_DESCRIPTION)
 			this.problemDescription = problemDescription;
@@ -57,7 +60,7 @@ public class Form {
 	
 	@Override
 	public String toString() {
-		return "Form [userID=" + userID + ", problemDescription=" + problemDescription + ", deviceSerialNumber="
+		return "Form [formID = " + formID + " userID = " + userID + ", problemDescription=" + problemDescription + ", deviceSerialNumber="
 				+ deviceSerialNumber + ", lightsStatus=" + lightsStatus.get(0) + " " +
 				lightsStatus.get(1) + " " + lightsStatus.get(2) + "]";
 	}
@@ -71,10 +74,18 @@ public class Form {
 		status.add(Indicator.on);
 		status.add(Indicator.blinking);
 		
-		Form form1 = new Form(4678, "my computer is broken", "65-x", status);
+		Form form1 = new Form(4678, "my computer is broken", "65-x");
 		form1.setLightsStatus(status);
 		
+		Form form2 = new Form(58, "my computer is broken", "54-x");
+		form2.setLightsStatus(status);
+		
+		Form form3 = new Form(58, "my computer is broken", "54-x");
+		form3.setLightsStatus(status);
+		
 		System.out.println(form1);
+		System.out.println(form2);
+		System.out.println(form3);
 	}
 	
 

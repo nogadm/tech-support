@@ -17,7 +17,7 @@ public class Server {
         HttpServer server = HttpServer.create(new InetSocketAddress(8000), 0);
         
         // Register a handler for the /age endpoint
-        server.createContext("/age", new AgeHandler());
+        server.createContext("/form", new FormHandler());
         
         // Use the default executor
         server.setExecutor(null);
@@ -27,8 +27,8 @@ public class Server {
         System.out.println("Server started");
     }
 
-    // Handler for the /age endpoint
-    static class AgeHandler implements HttpHandler {
+    // Handler for the /form FormHandler
+    static class FormHandler implements HttpHandler {
         @Override
         public void handle(HttpExchange httpExchange) throws IOException {
             // Read the request body into a string
@@ -62,4 +62,9 @@ public class Server {
         }
         return result.toString("UTF-8");
     }
+    
+    
+    
+    
+    
 }
