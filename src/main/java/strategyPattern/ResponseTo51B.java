@@ -35,9 +35,9 @@ public class ResponseTo51B implements ResponseStrategy {
 			return "Please wait";
 		if ((onCount > Consts.ONE_LIGHT) && (offCount == (Consts.ALL_LIGHTS - onCount)))
 			return "ALL is ok";
-		// CHANGE LATER!
+		// Other cases
 		else 
-			return "add later";
+			return "Unknown device";
 	}
 
 }

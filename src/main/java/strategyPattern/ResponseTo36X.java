@@ -35,8 +35,8 @@ public class ResponseTo36X implements ResponseStrategy {
 			return "turn on the device";
 		if (blinkingCount == Consts.TWO_LIGHTS)
 			return "Please wait";
-		// CHANGE LATER!
+		// Other cases
 		else 
-			return "add later";
+			return "Unknown device";
 	}
 }

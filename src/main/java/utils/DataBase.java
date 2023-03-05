@@ -12,20 +12,7 @@ import java.util.ArrayList;
 import techSupport.Form;
 
 public class DataBase {
-    public static void main(String[] args) {
-       
-        	ArrayList<Indicator> status = new ArrayList<>();
-            status.add(Indicator.off);
-    		status.add(Indicator.off);
-    		status.add(Indicator.off);
-            Form form = new Form(4678, "my laptop is broken", "3333333333333333333333333333333333333333333333333333333333333333");
-    		form.setLightsStatus(status);
-        	
-        	DataBase DB = new DataBase();
-        	DB.saveDataToDB(form, "it worked");
-          
-    }
-    
+   
     public void saveDataToDB(Form form, String response) {
         Connection conn = null;
         PreparedStatement formTblStatment = null;

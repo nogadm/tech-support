@@ -14,6 +14,7 @@ import strategyPattern.ResponseTo24X;
 import strategyPattern.ResponseTo36X;
 import strategyPattern.ResponseTo51B;
 import strategyPattern.ResponseToUnknown;
+import utils.DataBase;
 import utils.JsonUtils;
 
 public class Server {
@@ -25,6 +26,7 @@ public class Server {
         // Start the server
         server.start();
         System.out.println("Server started");
+        
     }
 
     // Handler for the /form FormHandler
@@ -35,15 +37,16 @@ public class Server {
             InputStream inputStream = httpExchange.getRequestBody();
             String requestString = readInputStream(inputStream);
             System.out.println("Received request: " + requestString);
-            
+           
             // Convert the request JSON to a Form object
             Form clientForm = JsonUtils.fromJson(requestString, Form.class);
-           
+            
             // Generate a response 
-            String response;
+            String response = null;
             String serialNumber = clientForm.getDeviceSerialNumber();
-            if (isNumber(serialNumber))
+            if (isNumber(serialNumber)) {
             	response = "Bad serial number";
+            }
             else {
             	 ResponseStrategy responseStrategy = chooseResponseStrtegy(serialNumber);
             	 response = responseStrategy.generateResponse(clientForm);
@@ -57,7 +60,9 @@ public class Server {
             outputStream.close();
             System.out.println("Sent response: " + response);
             
-            //TODO save to DB
+            // Save to DB
+            DataBase DB = new DataBase();
+        	DB.saveDataToDB(clientForm, response);
         }
         
      // Checks if serial number is a number

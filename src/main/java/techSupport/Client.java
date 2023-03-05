@@ -41,8 +41,9 @@ public class Client {
         status.add(Indicator.off);
 		status.add(Indicator.off);
 		status.add(Indicator.off);
-        Form form = new Form(4678, "my computer is broken", "4444");
+        Form form = new Form(4678, "my laptop is broken", "3333333333333333333333333333333333333333333333333333333333333333");
 		form.setLightsStatus(status);
+    	
 		return form;
     }
 }
