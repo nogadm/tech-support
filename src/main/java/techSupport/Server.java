@@ -56,6 +56,8 @@ public class Server {
             outputStream.flush();
             outputStream.close();
             System.out.println("Sent response: " + response);
+            
+            //TODO save to DB
         }
         
      // Checks if serial number is a number
@@ -67,7 +69,6 @@ public class Server {
                 return false;
             }
         }
-        
         
         public ResponseStrategy chooseResponseStrtegy(String serialNumber) {
         	ResponseStrategy startegy;
