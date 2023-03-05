@@ -6,8 +6,6 @@ import utils.Consts;
 import utils.Indicator;
 
 public class Form {
-	private static int formIdCounter = 1;
-	private int formID;
 	private int userID;
 	private String problemDescription;
 	private String deviceSerialNumber;
@@ -15,8 +13,6 @@ public class Form {
 	
 	// Form constructor
 	public Form(int userID, String problemDescription, String deviceSerialNumber) {
-		// Automatic count of formID
-		this.formID = formIdCounter++;
 		this.userID = userID;
 		// Problem description is up to 300 chars
 		if (problemDescription.length() <= Consts.MAX_LENGTH_OF_DESCRIPTION)
@@ -28,7 +24,7 @@ public class Form {
 		if (deviceSerialNumber.matches("^[A-Z0-9-]{64}$"))
 			this.deviceSerialNumber = deviceSerialNumber;
 		else 
-			this.deviceSerialNumber = null;
+			this.deviceSerialNumber = "00000000-00000000-00000000-00000000-00000000-00000000-00000000-00000000";
 		lightsStatus = new ArrayList<>();
 	}
 	
@@ -67,9 +63,9 @@ public class Form {
 	
 	@Override
 	public String toString() {
-		return "Form [formID = " + formID + " userID = " + userID + ", problemDescription=" + problemDescription + ", deviceSerialNumber="
-				+ deviceSerialNumber + ", lightsStatus=" + lightsStatus.get(0) + " " +
-				lightsStatus.get(1) + " " + lightsStatus.get(2) + "]";
+		return "Form [userID = " + userID + ", problemDescription=" + problemDescription + ", deviceSerialNumber="
+				+ deviceSerialNumber + ", lightsStatus=" + lightsStatus.get(Consts.FIRST_LIGHT) + " " +
+				lightsStatus.get(Consts.SECOND_LIGHT) + " " + lightsStatus.get(Consts.THIRD_LIGHT) + "]";
 	}
 
 }
