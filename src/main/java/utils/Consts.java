@@ -3,6 +3,7 @@ package utils;
 public class Consts {
 	
 	public static final int MAX_LENGTH_OF_DESCRIPTION = 300;
+	public static final int LENGTH_OF_DEVICE_SERIAL_NUMBER = 64;
 	
 	// Amount of lights in the same status
 	public static final int ALL_LIGHTS = 3;

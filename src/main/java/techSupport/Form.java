@@ -3,7 +3,6 @@ package techSupport;
 import java.util.ArrayList;
 
 import utils.Consts;
-import utils.Indicator;
 
 public class Form {
 	private int userID;
@@ -20,11 +19,11 @@ public class Form {
 		else 
 			this.problemDescription = problemDescription.substring(0, Consts.MAX_LENGTH_OF_DESCRIPTION);
 		
-		// Serial number must be 64 chars long and only contain capital letters, numbers or hyphens
-		if (deviceSerialNumber.matches("^[A-Z0-9-]{64}$"))
+		// Serial number must be 64 chars long
+		if (deviceSerialNumber.length() == Consts.LENGTH_OF_DEVICE_SERIAL_NUMBER)
 			this.deviceSerialNumber = deviceSerialNumber;
 		else 
-			this.deviceSerialNumber = "00000000-00000000-00000000-00000000-00000000-00000000-00000000-00000000";
+			this.deviceSerialNumber = "0000000-0000000-0000000-0000000-0000000-0000000-00000000-0000000";
 		lightsStatus = new ArrayList<>();
 	}
 	
