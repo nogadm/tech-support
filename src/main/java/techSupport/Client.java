@@ -13,8 +13,8 @@ public class Client {
     public static void main(String[] args) throws Exception {
      
     	// Convert the Form object to JSON
-    	Client client = new Client();
-    	Form exampleForm = client.createAnExampleForm();
+    	FormMaker formMaker = new FormMaker();
+    	Form exampleForm = formMaker.createAnExampleForm();
         String json = JsonUtils.toJson(exampleForm);
         
         // Send an HTTP POST request to the server
@@ -36,14 +36,5 @@ public class Client {
         connection.disconnect();
     } 
     
-    public Form createAnExampleForm() {
-    	ArrayList<Indicator> status = new ArrayList<>();
-        status.add(Indicator.off);
-		status.add(Indicator.off);
-		status.add(Indicator.off);
-        Form form = new Form(4678, "my laptop is broken", "3333333333333333333333333333333333333333333333333333333333333333");
-		form.setLightsStatus(status);
-    	
-		return form;
-    }
+    
 }
