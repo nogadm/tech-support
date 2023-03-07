@@ -3,9 +3,6 @@ package techSupport;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-
-import utils.Indicator;
 import utils.JsonUtils;
 
 public class Client {

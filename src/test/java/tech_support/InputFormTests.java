@@ -4,13 +4,8 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
-import org.junit.Before;
 import org.junit.Test;
 
-import strategyPattern.ResponseTo24X;
-import strategyPattern.ResponseTo36X;
-import strategyPattern.ResponseTo51B;
-import strategyPattern.ResponseToUnknown;
 import techSupport.Form;
 import utils.Consts;
 import utils.Indicator;
