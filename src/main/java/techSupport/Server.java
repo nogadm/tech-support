@@ -48,7 +48,11 @@ public class Server {
             	response = "Bad serial number";
             }
             else {
-            	 ResponseStrategy responseStrategy = chooseResponseStrtegy(serialNumber);
+            	
+            	Server server = new Server();
+            	
+            	
+            	 ResponseStrategy responseStrategy = server.chooseResponseStrtegy(serialNumber);
             	 response = responseStrategy.generateResponse(clientForm);
 			}
                
@@ -74,25 +78,26 @@ public class Server {
                 return false;
             }
         }
-        
-        public ResponseStrategy chooseResponseStrtegy(String serialNumber) {
-        	ResponseStrategy startegy;
-        	if (serialNumber.startsWith("24-X"))
-        		startegy = new ResponseTo24X();
-        	else {
-        		if (serialNumber.startsWith("36-X"))
-        			startegy = new ResponseTo36X();
-        		else {
-    				if (serialNumber.startsWith("51-B"))
-    					startegy = new ResponseTo51B();
-    				else {
-						startegy = new ResponseToUnknown();
-					}
-    			}
-        	}
-			return startegy;	
-        }
+   
          
+    }
+    
+    public ResponseStrategy chooseResponseStrtegy(String serialNumber) {
+    	ResponseStrategy startegy;
+    	if (serialNumber.startsWith("24-X"))
+    		startegy = new ResponseTo24X();
+    	else {
+    		if (serialNumber.startsWith("36-X"))
+    			startegy = new ResponseTo36X();
+    		else {
+				if (serialNumber.startsWith("51-B"))
+					startegy = new ResponseTo51B();
+				else {
+					startegy = new ResponseToUnknown();
+				}
+			}
+    	}
+		return startegy;	
     }
 
     // Read an input stream into a string
