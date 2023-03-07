@@ -27,6 +27,11 @@ public class Form {
 		lightsStatus = new ArrayList<>();
 	}
 	
+	// Empty constructor for tests
+	public Form() {
+		lightsStatus = new ArrayList<>();
+	}
+
 	// Getters and setters
 	public int getUserID() {
 		return userID;
