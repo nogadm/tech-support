@@ -3,6 +3,7 @@ package techSupport;
 import java.util.ArrayList;
 
 import utils.Consts;
+import utils.Indicator;
 
 public class Form {
 	private int userID;
@@ -20,10 +21,15 @@ public class Form {
 			this.problemDescription = problemDescription.substring(0, Consts.MAX_LENGTH_OF_DESCRIPTION);
 		
 		// Serial number must be 64 chars long
-		if (deviceSerialNumber.length() == Consts.LENGTH_OF_DEVICE_SERIAL_NUMBER)
-			this.deviceSerialNumber = deviceSerialNumber;
-		else 
+		if (deviceSerialNumber != null) {
+			if (deviceSerialNumber.length() == Consts.LENGTH_OF_DEVICE_SERIAL_NUMBER)
+				this.deviceSerialNumber = deviceSerialNumber;
+			else 
+				this.deviceSerialNumber = "0000000-0000000-0000000-0000000-0000000-0000000-00000000-0000000";
+		}
+		else {
 			this.deviceSerialNumber = "0000000-0000000-0000000-0000000-0000000-0000000-00000000-0000000";
+		}
 		lightsStatus = new ArrayList<>();
 	}
 	
@@ -46,7 +52,10 @@ public class Form {
 	}
 
 	public void setProblemDescription(String problemDescription) {
-		this.problemDescription = problemDescription;
+		if (problemDescription.length() <= Consts.MAX_LENGTH_OF_DESCRIPTION)
+			this.problemDescription = problemDescription;
+		else 
+			this.problemDescription = problemDescription.substring(0, Consts.MAX_LENGTH_OF_DESCRIPTION);
 	}
 
 	public String getDeviceSerialNumber() {
@@ -54,7 +63,15 @@ public class Form {
 	}
 
 	public void setDeviceSerialNumber(String deviceSerialNumber) {
-		this.deviceSerialNumber = deviceSerialNumber;
+		if (deviceSerialNumber != null) {
+			if (deviceSerialNumber.length() == Consts.LENGTH_OF_DEVICE_SERIAL_NUMBER)
+				this.deviceSerialNumber = deviceSerialNumber;
+			else 
+				this.deviceSerialNumber = "0000000-0000000-0000000-0000000-0000000-0000000-00000000-0000000";
+		}
+		else {
+			this.deviceSerialNumber = "0000000-0000000-0000000-0000000-0000000-0000000-00000000-0000000";
+		}
 	}
 
 	public ArrayList<utils.Indicator> getLightsStatus() {
@@ -62,7 +79,16 @@ public class Form {
 	}
 
 	public void setLightsStatus(ArrayList<utils.Indicator> lightsStatus) {
-		this.lightsStatus = lightsStatus;
+		if (lightsStatus.size() >= Consts.ALL_LIGHTS) {
+			ArrayList<utils.Indicator> shortenedlightsStatus = new ArrayList<>(lightsStatus.subList(0, 3));
+			this.lightsStatus = shortenedlightsStatus;
+		} 
+		else {
+			ArrayList<utils.Indicator> defaultLightsList = new ArrayList<>();
+			for (int i = 0; i < Consts.ALL_LIGHTS; i++)
+				defaultLightsList.add(Indicator.NotSpecified);
+			this.lightsStatus = defaultLightsList;
+		}
 	}
 	
 	@Override
