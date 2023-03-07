@@ -98,6 +98,41 @@ public class Form {
 				lightsStatus.get(Consts.SECOND_LIGHT) + " " + lightsStatus.get(Consts.THIRD_LIGHT) + "]";
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Form other = (Form) obj;
+		if (deviceSerialNumber == null) {
+			if (other.deviceSerialNumber != null)
+				return false;
+		} else if (!deviceSerialNumber.equals(other.deviceSerialNumber))
+			return false;
+		if (lightsStatus == null) {
+			if (other.lightsStatus != null)
+				return false;
+		} else {
+			if (!lightsStatus.get(Consts.FIRST_LIGHT).equals(other.lightsStatus.get(Consts.FIRST_LIGHT)))
+				return false;
+			if (!lightsStatus.get(Consts.SECOND_LIGHT).equals(other.lightsStatus.get(Consts.SECOND_LIGHT)))
+				return false;
+			if (!lightsStatus.get(Consts.THIRD_LIGHT).equals(other.lightsStatus.get(Consts.THIRD_LIGHT)))
+				return false;
+		}
+		if (problemDescription == null) {
+			if (other.problemDescription != null)
+				return false;
+		} else if (!problemDescription.equals(other.problemDescription))
+			return false;
+		if (userID != other.userID)
+			return false;
+		return true;
+	}
+
 }
 
 
