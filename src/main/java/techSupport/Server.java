@@ -33,6 +33,7 @@ public class Server {
     static class FormHandler implements HttpHandler {
         @Override
         public void handle(HttpExchange httpExchange) throws IOException {
+        	Server server = new Server();
             // Read the request body into a string
             InputStream inputStream = httpExchange.getRequestBody();
             String requestString = readInputStream(inputStream);
@@ -44,16 +45,13 @@ public class Server {
             // Generate a response 
             String response = null;
             String serialNumber = clientForm.getDeviceSerialNumber();
-            if (isNumber(serialNumber)) {
+            if (server.isNumber(serialNumber)) {
             	response = "Bad serial number";
             }
             else {
             	
-            	Server server = new Server();
-            	
-            	
-            	 ResponseStrategy responseStrategy = server.chooseResponseStrtegy(serialNumber);
-            	 response = responseStrategy.generateResponse(clientForm);
+            	ResponseStrategy responseStrategy = server.chooseResponseStrtegy(serialNumber);
+            	response = responseStrategy.generateResponse(clientForm);
 			}
                
             // Send the response
@@ -68,18 +66,7 @@ public class Server {
             DataBase DB = new DataBase();
         	DB.saveDataToDB(clientForm, response);
         }
-        
-     // Checks if serial number is a number
-        public boolean isNumber(String str) {
-            try {
-                Double.parseDouble(str);
-                return true;
-            } catch (NumberFormatException e) {
-                return false;
-            }
-        }
-   
-         
+            
     }
     
     public ResponseStrategy chooseResponseStrtegy(String serialNumber) {
@@ -98,6 +85,16 @@ public class Server {
 			}
     	}
 		return startegy;	
+    }
+    
+    // Checks if serial number is a number
+    public boolean isNumber(String str) {
+        try {
+            Double.parseDouble(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 
     // Read an input stream into a string

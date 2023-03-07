@@ -13,7 +13,7 @@ import strategyPattern.ResponseTo51B;
 import strategyPattern.ResponseToUnknown;
 import techSupport.Server;
 
-public class ResponseTests {
+public class ResponseStrategyTests {
 	private static Server server;
 	
 	
@@ -22,6 +22,8 @@ public class ResponseTests {
 		server = new Server();
 	}
 
+	
+	// Tests for choice of response strategy 
     @Test
     public void testResponseTo24X() {
         String serialNumber = "24-X123";
@@ -50,5 +52,18 @@ public class ResponseTests {
          assertTrue(strategy instanceof ResponseToUnknown);
     }
 
+    @Test
+    public void testResponseToTrueNumber() {
+    	 String serialNumber = "99578123";
+         Boolean isNumber = server.isNumber(serialNumber);
+         assertTrue(isNumber);
+    }
+    
+    @Test
+    public void testResponseToFalseNumber() {
+    	 String serialNumber = "99-X123";
+         Boolean isNumber = server.isNumber(serialNumber);
+         assertFalse(isNumber);
+    }
 }
 
